@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: finance-ledger-api
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/finance_ledger
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:your-256-bit-secret-key-change-in-production-please}
+    expiration-ms: 86400000 # 24 hours
+
+  google:
+    client-id: ${GOOGLE_CLIENT_ID:1078836311095-4geb49l2h20h5vf1n7im1tq11v0lc5v2.apps.googleusercontent.com}
+
+  gemini:
+    api-key: ${GEMINI_API_KEY:your-gemini-api-key}
+
+server:
+  port: 3000
+  servlet:
+    context-path: /api
